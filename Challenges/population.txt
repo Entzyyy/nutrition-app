@@ -1,0 +1,20 @@
+Paris,2161000
+Berlin,3645000
+Rome,2873000
+Madrid,3223000
+Lisbon,504718
+London,8982000
+Amsterdam,872757
+Brussels,185103
+Luxembourg,128512
+Bern,133798
+Vienna,1897000
+Warsaw,1765000
+Prague,1309000
+Athens,664046
+Ankara,5503985
+Washington,705749
+Ottawa,934243
+Mexico City,9209944
+Brasília,3055149
+Tokyo,13929286
