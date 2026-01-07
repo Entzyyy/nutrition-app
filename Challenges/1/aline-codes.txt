@@ -1,6 +1,0 @@
-CBF Chicken Burger with Fries
-VBF Vegetarian Burger with Fries
-BBF Black Angus Burger with Fries
-CNF Chicken Nuggets with Fries
-RBF Raclette Burger with Fries
-DCF Double Cheese Burger with Fries
