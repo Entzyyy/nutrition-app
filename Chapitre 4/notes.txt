@@ -1,0 +1,3 @@
+stack
+
+queue gabs in Examen, SImulationen sind aber net mehr im Program
