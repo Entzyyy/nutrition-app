@@ -1,0 +1,20 @@
+France,Paris
+Germany,Berlin
+Italy,Rome
+Spain,Madrid
+Portugal,Lisbon
+United Kingdom,London
+Netherlands,Amsterdam
+Belgium,Brussels
+Luxembourg,Luxembourg
+Switzerland,Bern
+Austria,Vienna
+Poland,Warsaw
+Czech Republic,Prague
+Greece,Athens
+Turkey,Ankara
+United States,Washington
+Canada,Ottawa
+Mexico,Mexico City
+Brazil,Brasília
+Japan,Tokyo
