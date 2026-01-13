@@ -7,14 +7,23 @@ st.set_page_config(page_title="Nutrition App", page_icon="🥗", layout="centere
 
 def scanner():
     st.header("📷 Scanner")
-    item = st.text_input("Lebensmittel eingeben (Scan)")
+    st.write("Gib ein Lebensmittel ein und erhalte eine schnelle Einschätzung.")
+    item = st.text_input("Lebensmittel eingeben (z. B. Cornflakes, Joghurt, Cola)")
     if st.button("Scannen"):
         if item:
             st.success(f"{item} wurde analysiert ✅")
-            st.write("• Zucker: ... • Salz: ... • Kohlenhydrate: ... • Ballaststoffe: ...  • Gesättigte Fettsäuren: ... • Eiweiss: ... • Zusatzstoffe: ... :")
             st.write("• Score: 78/100")
+            st.write("Zucker: ... Salz: ... Kohlenhydrate: ... Ballaststoffe: ...  Eiweiss: ... Gesättigte Fettsäuren: ... Zusatzstoffe: ... :")
+            st.write("Dieses Produkt enthält weniger ... als andere und ist für den Alltag geeignet")
+            st.write("Details: Weniger.. hilft dabei, Energieausbrüche zu vermeiden und ... zu unterstützen")
+            st.write("Quelle: WHO - Sugar Intake Guidelines")
+
         else:
             st.warning("Bitte etwas eingeben        ")
+    
+            with st.expander("📖 Mehr erfahren"):
+                st.write(["details"])
+                st.caption(f"Quelle: {['source']}")
 
 
 def trends():
