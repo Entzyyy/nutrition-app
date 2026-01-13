@@ -11,10 +11,10 @@ def scanner():
     if st.button("Scannen"):
         if item:
             st.success(f"{item} wurde analysiert ✅")
-            st.write("• Zucker: niedrig")
+            st.write("• Zucker: ... • Salz: ... • Kohlenhydrate: ... • Ballaststoffe: ...  • Gesättigte Fettsäuren: ... • Eiweiss: ... • Zusatzstoffe: ... :")
             st.write("• Score: 78/100")
         else:
-            st.warning("Bitte etwas eingeben")
+            st.warning("Bitte etwas eingeben        ")
 
 
 def trends():
