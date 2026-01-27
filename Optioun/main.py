@@ -1,29 +1,51 @@
 # Ishak Boukellal – Nutrition App (POC)
 
 import streamlit as st
-from PIL import Image
+import requests
+
+def fetch_product(barcode):
+    url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
+    res = requests.get(url).json()
+
+    if res.get("status") == 1:
+        return res["product"]
+    else:
+        return None
 
 st.set_page_config(page_title="Nutrition App", page_icon="🥗", layout="centered")
 
 def scanner():
     st.header("📷 Scanner")
-    st.write("Gib ein Lebensmittel ein und erhalte eine schnelle Einschätzung.")
-    item = st.text_input("Lebensmittel eingeben (z. B. Cornflakes, Joghurt, Cola)")
-    if st.button("Scannen"):
-        if item:
-            st.success(f"{item} wurde analysiert ✅")
-            st.write("• Score: 78/100")
-            st.write("Zucker: ... Salz: ... Kohlenhydrate: ... Ballaststoffe: ...  Eiweiss: ... Gesättigte Fettsäuren: ... Zusatzstoffe: ... :")
-            st.write("Dieses Produkt enthält weniger ... als andere und ist für den Alltag geeignet")
-            st.write("Details: Weniger.. hilft dabei, Energieausbrüche zu vermeiden und ... zu unterstützen")
-            st.write("Quelle: WHO - Sugar Intake Guidelines")
+    st.write("Gib ein Lebensmittel oder einen Barcode ein und erhalte eine schnelle Einschätzung.")
 
-        else:
-            st.warning("Bitte etwas eingeben        ")
+    barcode = st.text_input("Barcode eingeben (z. B. 7613034626844)")
     
-            with st.expander("📖 Mehr erfahren"):
-                st.write(["details"])
-                st.caption(f"Quelle: {['source']}")
+    if st.button("Scannen"):
+        if barcode:
+            product = fetch_product(barcode)
+
+            if product:
+                st.success(f"{product.get('product_name', 'Unbekanntes Produkt')} wurde analysiert ✅")
+
+                nutriments = product.get("nutriments", {})
+
+                st.write(f"• **Name:** {product.get('product_name', 'N/A')}")
+                st.write(f"• **Marke:** {product.get('brands', 'N/A')}")
+                st.write(f"• **Nutri-Score:** {product.get('nutriscore_grade', 'N/A').upper()}")
+                st.write("---")
+                st.write("### 🔍 Nährwerte (pro 100g):")
+                st.write(f"- Zucker: {nutriments.get('sugars_100g', 'N/A')} g")
+                st.write(f"- Salz: {nutriments.get('salt_100g', 'N/A')} g")
+                st.write(f"- Kohlenhydrate: {nutriments.get('carbohydrates_100g', 'N/A')} g")
+                st.write(f"- Eiweiß: {nutriments.get('proteins_100g', 'N/A')} g")
+                st.write(f"- Fett: {nutriments.get('fat_100g', 'N/A')} g")
+                st.write(f"- Gesättigte Fettsäuren: {nutriments.get('saturated-fat_100g', 'N/A')} g")
+
+            else:
+                st.error("❌ Produkt nicht gefunden. Bitte überprüfe den Barcode.")
+        else:
+            st.warning("Bitte einen Barcode eingeben.")
+
 
 
 def trends():
